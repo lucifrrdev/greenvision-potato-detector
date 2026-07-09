@@ -57,4 +57,6 @@ def index():
     return jsonify({"message": "Greenvision Anugrah Agro Putra CNN API Server is running!"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    port = int(os.environ.get("PORT", 5001))
+    debug_mode = os.environ.get("DEBUG", "True").lower() in ("true", "1", "t", "y", "yes")
+    app.run(host="0.0.0.0", port=port, debug=debug_mode)

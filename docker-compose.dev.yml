@@ -1,0 +1,54 @@
+services:
+  # 1. Backend Laravel (PHP 8.2) - Development
+  laravel_backend:
+    image: bitnamilegacy/laravel:10
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./app/.env.development
+    depends_on:
+      - mysql_db
+
+  # 2. Database MySQL - Development
+  mysql_db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=greenvision
+      - MYSQL_USER=greenuser
+      - MYSQL_PASSWORD=rootpass
+      - MYSQL_ROOT_PASSWORD=rootpass
+    volumes:
+      - mysql_data_dev:/var/lib/mysql
+
+  # 3. AI Python Model & API (Flask) - Development
+  python_ai:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./python:/app
+    env_file:
+      - ./python/.env.development
+
+  # 4. phpMyAdmin Database Management - Development
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql_db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpass
+    depends_on:
+      - mysql_db
+
+volumes:
+  mysql_data_dev:
+    driver: local

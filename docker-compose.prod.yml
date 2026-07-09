@@ -1,0 +1,59 @@
+services:
+  # 1. Backend Laravel (PHP 8.2) - Production
+  laravel_backend:
+    image: bitnamilegacy/laravel:10
+    restart: always
+    ports:
+      - "80:8000" # Standard HTTP port for production
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./app/.env.production
+    depends_on:
+      - mysql_db
+
+  # 2. Database MySQL - Production
+  mysql_db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=greenvision
+      - MYSQL_USER=greenuser_prod
+      - MYSQL_PASSWORD=secureproductionpassword
+      - MYSQL_ROOT_PASSWORD=secureproductionrootpass
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+
+  # 3. AI Python Model & API (Flask) - Production
+  python_ai:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./python:/app
+    env_file:
+      - ./python/.env.production
+
+  # 4. phpMyAdmin (Optional/Disabled in Production by default for security)
+  # Uncomment if database management is required in production environment
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin:latest
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     - PMA_HOST=mysql_db
+  #     - PMA_PORT=3306
+  #     - PMA_USER=root
+  #     - PMA_PASSWORD=secureproductionrootpass
+  #   depends_on:
+  #     - mysql_db
+
+volumes:
+  mysql_data_prod:
+    driver: local
