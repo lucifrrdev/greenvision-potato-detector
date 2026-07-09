@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'python_ai' => [
+        'url' => env('PYTHON_AI_URL', 'http://python_ai:5001'),
+    ],
+
 ];

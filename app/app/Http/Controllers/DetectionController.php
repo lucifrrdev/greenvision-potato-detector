@@ -32,8 +32,8 @@ class DetectionController extends Controller
 
         try {
             // Kirim gambar ke Flask API menggunakan Multipart Request
-            // Menggunakan DNS internal docker yang dikonfigurasi melalui env
-            $pythonAiUrl = env('PYTHON_AI_URL', 'http://python_ai:5001');
+            // Menggunakan DNS internal docker yang dikonfigurasi melalui config/services.php
+            $pythonAiUrl = config('services.python_ai.url');
             $response = Http::attach(
                 'file', 
                 file_get_contents($filePath), 
