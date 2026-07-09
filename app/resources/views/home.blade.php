@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Insurai - Platform Diagnosis & Proteksi Tanaman Kentang')
+@section('title', 'greenvision - Platform Diagnosis & Proteksi Tanaman Kentang')
 
 @section('content')
 <!-- Hero Slider Section -->
@@ -20,7 +20,7 @@
                     Lindungi Hasil Panen Kentang dengan Deteksi Dini AI.
                 </h2>
                 <p class="text-theme-textMuted text-sm md:text-base max-w-xl leading-relaxed">
-                    Insurai memadukan teknologi Convolutional Neural Network (CNN) untuk mendeteksi penyakit daun kentang secara akurat, memberi solusi pestisida tepat guna, serta panduan penyiraman berkala.
+                    greenvision memadukan teknologi Convolutional Neural Network (CNN) untuk mendeteksi penyakit daun kentang secara akurat, memberi solusi pestisida tepat guna, serta panduan penyiraman berkala.
                 </p>
                 <div class="pt-2 flex flex-wrap gap-3 items-center">
                     <a class="tp-btn py-3 px-6 text-sm" href="{{ route('input') }}">Mulai Analisis Instan</a>

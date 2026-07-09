@@ -4,7 +4,7 @@ services:
     image: bitnamilegacy/laravel:10
     restart: always
     ports:
-      - "80:8000" # Standard HTTP port for production
+      - "8000:8000"
     volumes:
       - ./app:/app
     env_file:
@@ -41,18 +41,18 @@ services:
 
   # 4. phpMyAdmin (Optional/Disabled in Production by default for security)
   # Uncomment if database management is required in production environment
-  # phpmyadmin:
-  #   image: phpmyadmin/phpmyadmin:latest
-  #   restart: always
-  #   ports:
-  #     - "8080:80"
-  #   environment:
-  #     - PMA_HOST=mysql_db
-  #     - PMA_PORT=3306
-  #     - PMA_USER=root
-  #     - PMA_PASSWORD=secureproductionrootpass
-  #   depends_on:
-  #     - mysql_db
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql_db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=secureproductionrootpass
+    depends_on:
+      - mysql_db
 
 volumes:
   mysql_data_prod:
