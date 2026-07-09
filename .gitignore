@@ -23,7 +23,7 @@
 /python/.pytest_cache/
 /python/dataset/
 /python/dataset_temp/
-/python/potato_disease_model.h5
+# /python/potato_disease_model.h5
 
 # Laravel backend files
 /app/vendor/
@@ -32,9 +32,9 @@
 /app/public/predictions/*
 !/app/public/predictions/.gitkeep
 /app/storage/*.key
-/app/.env
-/app/.env.backup
-/app/.env.production
+# /app/.env
+# /app/.env.backup
+# /app/.env.production
 /app/bootstrap/cache/*
 !/app/bootstrap/cache/.gitkeep
 
