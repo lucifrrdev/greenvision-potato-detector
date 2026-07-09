@@ -1,0 +1,43 @@
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotbackups
+
+# Large zip archives in project root
+/archive.zip
+/archive2.zip
+
+# Python backend files
+/python/venv/
+/python/.venv/
+/python/__pycache__/
+/python/*.pyc
+/python/*.pyo
+/python/*.pyd
+/python/.pytest_cache/
+/python/dataset/
+/python/dataset_temp/
+/python/potato_disease_model.h5
+
+# Laravel backend files
+/app/vendor/
+/app/node_modules/
+/app/public/storage
+/app/public/predictions/*
+!/app/public/predictions/.gitkeep
+/app/storage/*.key
+/app/.env
+/app/.env.backup
+/app/.env.production
+/app/bootstrap/cache/*
+!/app/bootstrap/cache/.gitkeep
+
+# Docker volumes / MySQL data if kept locally
+/mysql_data/
+
