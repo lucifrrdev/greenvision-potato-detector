@@ -433,7 +433,7 @@
         formData.append('file', fileToSend);
 
         try {
-            const response = await fetch("{{ route('predict') }}", {
+            const response = await fetch("{{ route('predict', [], false) }}", {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
