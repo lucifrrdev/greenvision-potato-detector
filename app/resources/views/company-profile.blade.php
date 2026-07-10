@@ -25,13 +25,15 @@
             </div>
 
             <!-- Right: Logo & Badge -->
-            <div class="lg:col-span-5 flex justify-center relative">
-                <div class="w-56 h-56 bg-gradient-to-br from-emerald-50 to-emerald-100 border border-theme-borderLight rounded-2xl flex items-center justify-center text-7xl shadow relative overflow-hidden">
-                    🥔
-                </div>
-                <div class="absolute -bottom-4 -right-4 bg-theme-blue text-white py-2 px-4 rounded-xl shadow-lg">
-                    <div class="text-[0.55rem] text-theme-green uppercase font-bold tracking-wider">Established Since</div>
-                    <div class="text-sm font-extrabold">Tahun 2005</div>
+            <div class="lg:col-span-5 flex justify-center w-full">
+                <div class="relative w-full max-w-lg">
+                    <div class="w-full aspect-[4/3] border border-theme-borderLight rounded-3xl shadow-xl overflow-hidden">
+                        <img src="{{ asset('potato_seeds_brand.png') }}" alt="CV Anugrah Agro Putra" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-theme-blue text-white py-2.5 px-5 rounded-2xl shadow-xl z-10">
+                        <div class="text-[0.6rem] text-theme-green uppercase font-bold tracking-wider">Established Since</div>
+                        <div class="text-sm font-extrabold">Tahun 2005</div>
+                    </div>
                 </div>
             </div>
 
@@ -50,46 +52,66 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- G0 -->
-            <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm hover:shadow transition-all flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-theme-borderLight shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
                 <div class="space-y-3 text-left">
-                    <span class="bg-emerald-50 text-theme-green px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border border-theme-green/20">Generasi 0</span>
-                    <h3 class="text-base font-bold text-theme-blue mt-1">Benih Dasar (G0)</h3>
-                    <p class="text-theme-textMuted text-xs leading-relaxed">
-                        Benih awal super steril bebas patogen yang dihasilkan langsung dari kultur jaringan di dalam rumah kaca kedap serangga.
-                    </p>
+                    <div class="w-full aspect-[4/3] overflow-hidden relative">
+                        <img src="{{ asset('g0_seeds.webp') }}" alt="Benih Dasar (G0)" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold shadow-sm">Generasi 0</span>
+                    </div>
+                    <div class="p-5 pt-2 space-y-2">
+                        <h3 class="text-base font-bold text-theme-blue">Benih Dasar (G0)</h3>
+                        <p class="text-theme-textMuted text-xs leading-relaxed">
+                            Benih awal super steril bebas patogen yang dihasilkan langsung dari kultur jaringan di dalam rumah kaca kedap serangga.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- G1 -->
-            <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm hover:shadow transition-all flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-theme-borderLight shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
                 <div class="space-y-3 text-left">
-                    <span class="bg-emerald-50 text-theme-green px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border border-theme-green/20">Generasi 1</span>
-                    <h3 class="text-base font-bold text-theme-blue mt-1">Benih Pokok (G1)</h3>
-                    <p class="text-theme-textMuted text-xs leading-relaxed">
-                        Benih generasi pertama hasil perbanyakan dari benih dasar G0 yang telah ditanam di lapangan dengan pengawasan ketat.
-                    </p>
+                    <div class="w-full aspect-[4/3] overflow-hidden relative">
+                        <img src="{{ asset('g1_seeds.webp') }}" alt="Benih Pokok (G1)" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold shadow-sm">Generasi 1</span>
+                    </div>
+                    <div class="p-5 pt-2 space-y-2">
+                        <h3 class="text-base font-bold text-theme-blue">Benih Pokok (G1)</h3>
+                        <p class="text-theme-textMuted text-xs leading-relaxed">
+                            Benih generasi pertama hasil perbanyakan dari benih dasar G0 yang telah ditanam di lapangan dengan pengawasan ketat.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- G2 -->
-            <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm hover:shadow transition-all flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-theme-borderLight shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
                 <div class="space-y-3 text-left">
-                    <span class="bg-emerald-50 text-theme-green px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border border-theme-green/20">Generasi 2</span>
-                    <h3 class="text-base font-bold text-theme-blue mt-1">Benih Sebar (G2)</h3>
-                    <p class="text-theme-textMuted text-xs leading-relaxed">
-                        Benih generasi kedua hasil perbanyakan G1 yang siap didistribusikan untuk ditanam oleh petani kentang komersial.
-                    </p>
+                    <div class="w-full aspect-[4/3] overflow-hidden relative">
+                        <img src="{{ asset('g2_seeds.webp') }}" alt="Benih Sebar (G2)" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold shadow-sm">Generasi 2</span>
+                    </div>
+                    <div class="p-5 pt-2 space-y-2">
+                        <h3 class="text-base font-bold text-theme-blue">Benih Sebar (G2)</h3>
+                        <p class="text-theme-textMuted text-xs leading-relaxed">
+                            Benih generasi kedua hasil perbanyakan G1 yang siap didistribusikan untuk ditanam oleh petani kentang komersial.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- Planlet -->
-            <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm hover:shadow transition-all flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-theme-borderLight shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between">
                 <div class="space-y-3 text-left">
-                    <span class="bg-emerald-50 text-theme-green px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold border border-theme-green/20">In-Vitro</span>
-                    <h3 class="text-base font-bold text-theme-blue mt-1">Planlet Kentang</h3>
-                    <p class="text-theme-textMuted text-xs leading-relaxed">
-                        Tanaman in-vitro hasil kultur jaringan laboratorium yang steril dan siap untuk proses aklimatisasi.
-                    </p>
+                    <div class="w-full aspect-[4/3] overflow-hidden relative">
+                        <img src="{{ asset('g3_seeds.webp') }}" alt="Planlet Kentang" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white px-2.5 py-0.5 rounded-full text-[0.65rem] font-bold shadow-sm">In-Vitro</span>
+                    </div>
+                    <div class="p-5 pt-2 space-y-2">
+                        <h3 class="text-base font-bold text-theme-blue">Planlet Kentang</h3>
+                        <p class="text-theme-textMuted text-xs leading-relaxed">
+                            Tanaman in-vitro hasil kultur jaringan laboratorium yang steril dan siap untuk proses aklimatisasi.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

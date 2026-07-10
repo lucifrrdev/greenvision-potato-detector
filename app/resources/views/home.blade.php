@@ -31,11 +31,9 @@
                 </div>
             </div>
             <!-- Right Banner Image / Illustration -->
-            <div class="lg:col-span-5 relative flex justify-center">
-                <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-lg border-2 border-white bg-slate-100">
-                    <div class="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-300 flex items-center justify-center text-7xl">
-                        🍃
-                    </div>
+            <div class="lg:col-span-5 relative flex justify-center w-full">
+                <div class="relative w-full max-w-lg aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+                    <img src="{{ asset('hero_leaf_scan.webp') }}" alt="AI Deteksi Daun Kentang" class="w-full h-full object-cover">
                 </div>
                 <!-- Mini Badge 1 -->
                 <div class="absolute -top-4 -left-4 bg-white border border-theme-borderLight rounded-xl p-3 shadow flex items-center space-x-2">

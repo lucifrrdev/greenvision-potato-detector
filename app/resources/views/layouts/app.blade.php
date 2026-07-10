@@ -116,23 +116,23 @@
 
                     <!-- Navigation Links (Desktop) -->
                     <div class="hidden md:flex items-center space-x-1">
-                        <a href="{{ route('home') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('home') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('home') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('home') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Home
                         </a>
-                        <a href="{{ route('company-profile') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('company-profile') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('company-profile') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('company-profile') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Profil Perusahaan
                         </a>
-                        <a href="{{ route('about') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('about') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('about') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('about') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Tentang RAD
                         </a>
-                        <a href="{{ route('project') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('project') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('project') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('project') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Project AI
                         </a>
-                        <a href="{{ route('input') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('input') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('input') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('input') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Deteksi Penyakit
                         </a>
                         @auth
-                            <a href="{{ route('history') }}" class="px-4 py-2 rounded-md text-sm font-bold transition-colors {{ Route::is('history') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                            <a href="{{ route('history') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('history') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                                 Hasil Tanaman
                             </a>
                         @endauth
