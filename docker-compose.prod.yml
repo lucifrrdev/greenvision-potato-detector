@@ -50,7 +50,7 @@ services:
     environment:
       PMA_HOST: mysql_db
       PMA_PORT: 3306
-      PMA_USER: root
+      PMA_USER: greenuser
       PMA_PASSWORD: rootpass
     depends_on:
       - mysql_db
