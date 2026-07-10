@@ -42,7 +42,8 @@ services:
   # 4. phpMyAdmin (Optional/Disabled in Production by default for security)
   # Uncomment if database management is required in production environment
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin:latest # <--- Ubah jadi ini (hapus phpmyadmin/ di depan)
+    platform: linux/arm64 # <--- TAMBAHKAN BARIS INI
     restart: always
     ports:
       - "8080:80"
@@ -50,7 +51,7 @@ services:
       - PMA_HOST=mysql_db
       - PMA_PORT=3306
       - PMA_USER=root
-      - PMA_PASSWORD=secureproductionrootpass
+      - PMA_PASSWORD=rootpass # <--- UBAH JADI rootpass (biar sama dengan mysql_db)
     depends_on:
       - mysql_db
 
