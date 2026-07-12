@@ -367,10 +367,10 @@
             <div class="bg-theme-blue text-white/90 p-4 rounded-xl font-mono text-xs leading-relaxed overflow-x-auto shadow-inner">
                 <div class="text-theme-green font-bold mb-2">// Flask API Endpoints</div>
                 <div class="text-white/60">// 1. Health Check</div>
-                <div><span class="text-emerald-300">GET</span>  http://python_ai:<span class="text-amber-300">5001</span>/</div>
+                <div><span class="text-emerald-300">GET</span>  http://python_ai:<span class="text-amber-300">8001</span>/</div>
                 <div class="text-white/60">// Response: {{"{"}} "message": "Greenvision Anugrah Agro Putra CNN API Server is running!" {{"}"}} </div>
                 <div class="mt-2 text-white/60">// 2. Prediksi Penyakit Daun</div>
-                <div><span class="text-amber-300">POST</span> http://python_ai:<span class="text-amber-300">5001</span>/predict</div>
+                <div><span class="text-amber-300">POST</span> http://python_ai:<span class="text-amber-300">8001</span>/predict</div>
                 <div class="mt-1 text-white/60">// Request (multipart/form-data)</div>
                 <div>Content-Type : <span class="text-emerald-300">multipart/form-data</span></div>
                 <div>Body Key     : <span class="text-amber-300">file</span> (citra daun kentang, format JPG/PNG)</div>

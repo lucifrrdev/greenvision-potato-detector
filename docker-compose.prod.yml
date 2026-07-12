@@ -17,7 +17,7 @@ services:
     image: mysql:8.0
     restart: always
     ports:
-      - "3306:3306"
+      - "8003:3306"
     environment:
       - MYSQL_DATABASE=greenvision
       - MYSQL_USER=greenuser
@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "5001:5001"
+      - "8001:8001"
     volumes:
       - ./python:/app
     env_file:
@@ -46,7 +46,7 @@ services:
     platform: linux/arm64
     restart: always
     ports:
-      - "8080:80"
+      - "8002:80"
     environment:
       PMA_HOST: mysql_db
       PMA_PORT: 3306

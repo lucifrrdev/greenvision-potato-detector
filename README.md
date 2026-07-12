@@ -34,9 +34,9 @@ Sistem berjalan secara terisolasi di dalam 4 kontainer Docker berikut:
 | Nama Layanan (Service) | Teknologi / Image | Port Eksternal | Peran & Deskripsi |
 | :--- | :--- | :--- | :--- |
 | **`laravel_backend`** | `bitnamilegacy/laravel:10` | `8000:8000` | Menyajikan antarmuka web, mengelola otentikasi user, riwayat diagnosis, dan mem-proxy permintaan gambar ke Flask API. |
-| **`mysql_db`** | `mysql:8.0` | `3306:3306` | Menyimpan data user dan riwayat rekam medis diagnosis tanaman (`detections`). |
-| **`python_ai`** | Custom Python (Flask) | `5001:5001` | Melayani endpoint deteksi gambar daun kentang menggunakan library TensorFlow & OpenCV. |
-| **`phpmyadmin`** | `phpmyadmin/phpmyadmin` | `8080:80` | Antarmuka grafis berbasis web untuk mengelola dan memantau database MySQL. |
+| **`python_ai`** | Custom Python (Flask) | `8001:8001` | Melayani endpoint deteksi gambar daun kentang menggunakan library TensorFlow & OpenCV. |
+| **`phpmyadmin`** | `phpmyadmin/phpmyadmin` | `8002:80` | Antarmuka grafis berbasis web untuk mengelola dan memantau database MySQL. |
+| **`mysql_db`** | `mysql:8.0` | `8003:3306` | Menyimpan data user dan riwayat rekam medis diagnosis tanaman (`detections`). |
 
 ---
 
@@ -85,7 +85,7 @@ graph LR
   - `Conv2D (64 filters, 3x3)` + `MaxPooling2D (2x2)`
   - `Conv2D (64 filters, 3x3)` + `MaxPooling2D (2x2)`
   - `Flatten` -> `Dense (64 units, ReLU)` -> `Dense (3, Softmax Output)`
-- **Endpoint Deteksi**: `POST http://python_ai:5001/predict` (menerima file citra berlabel key `file`).
+- **Endpoint Deteksi**: `POST http://python_ai:8001/predict` (menerima file citra berlabel key `file`).
 
 ---
 
@@ -103,11 +103,11 @@ docker compose -f greenvision/docker-compose.yml up -d
 Setelah kontainer aktif, Anda dapat mengakses layanan melalui browser Anda pada alamat berikut:
 
 - **Aplikasi Web Greenvision**: 👉 [http://localhost:8000](http://localhost:8000)
-- **phpMyAdmin**: 👉 [http://localhost:8080](http://localhost:8080)
+- **Flask AI API**: 👉 [http://localhost:8001](http://localhost:8001)
+- **phpMyAdmin**: 👉 [http://localhost:8002](http://localhost:8002)
   - **Host**: `mysql_db`
   - **Username**: `root`
   - **Password**: `rootpass`
-- **Flask AI API**: 👉 [http://localhost:5001](http://localhost:5001)
 
 ### 3. Matikan Kontainer
 Untuk menghentikan semua kontainer:

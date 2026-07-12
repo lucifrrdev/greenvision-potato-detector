@@ -32,7 +32,7 @@ return [
     ],
 
     'python_ai' => [
-        'url' => env('PYTHON_AI_URL', 'http://python_ai:5001'),
+        'url' => env('PYTHON_AI_URL', 'http://python_ai:8001'),
     ],
 
 ];

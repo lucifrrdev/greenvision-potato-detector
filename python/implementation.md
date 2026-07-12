@@ -34,11 +34,11 @@ docker compose -f greenvision/docker-compose.yml up -d --build python_ai
 ### 2. URL Endpoint Kontainer
 Di dalam arsitektur Docker Compose, Flask API ini dapat diakses oleh kontainer Laravel menggunakan hostname:
 ```text
-http://python_ai:5001/predict
+http://python_ai:8001/predict
 ```
 Sedangkan dari sisi browser lokal Anda (host), API dapat diakses pada:
 ```text
-http://127.0.0.1:5001/
+http://127.0.0.1:8001/
 ```
 
 ---

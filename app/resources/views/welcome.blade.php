@@ -94,7 +94,7 @@
         const resultBox = document.getElementById('resultBox');
 
         // Ganti URL ke API server Flask Anda
-        const API_URL = "http://127.0.0.1:5001/predict";
+        const API_URL = "http://127.0.0.1:8001/predict";
 
         // Tampilkan Pratinjau Gambar saat file dipilih
         fileInput.addEventListener('change', function() {
