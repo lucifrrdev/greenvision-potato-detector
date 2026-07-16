@@ -11,11 +11,12 @@ services:
       - mysql_db
     networks:
       - greenvision-net
+      - traefik-net
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.laravel.rule=Host(`greenvision.catrova.com`)"
-      - "traefik.http.routers.laravel.entrypoints=web"
-      - "traefik.http.services.laravel.loadbalancer.server.port=8000"
+      traefik.enable: "true"
+      traefik.http.routers.laravel.rule: "Host(`greenvision.catrova.com`)"
+      traefik.http.routers.laravel.entrypoints: "web"
+      traefik.http.services.laravel.loadbalancer.server.port: "8000"
 
   # 2. Database MySQL - Production
   mysql_db:
@@ -43,11 +44,12 @@ services:
       - ./python/.env.production
     networks:
       - greenvision-net
+      - traefik-net
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.python_ai.rule=Host(`greenvision-ai.catrova.com`)"
-      - "traefik.http.routers.python_ai.entrypoints=web"
-      - "traefik.http.services.python_ai.loadbalancer.server.port=8001"
+      traefik.enable: "true"
+      traefik.http.routers.python_ai.rule: "Host(`greenvision-ai.catrova.com`)"
+      traefik.http.routers.python_ai.entrypoints: "web"
+      traefik.http.services.python_ai.loadbalancer.server.port: "8001"
 
   # 4. phpMyAdmin (Optional/Disabled in Production by default for security)
   # Uncomment if database management is required in production environment
@@ -64,11 +66,12 @@ services:
       - mysql_db
     networks:
       - greenvision-net
+      - traefik-net
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.phpmyadmin.rule=Host(`pma.greenvision.catrova.com`)"
-      - "traefik.http.routers.phpmyadmin.entrypoints=web"
-      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+      traefik.enable: "true"
+      traefik.http.routers.phpmyadmin.rule: "Host(`pma.greenvision.catrova.com`)"
+      traefik.http.routers.phpmyadmin.entrypoints: "web"
+      traefik.http.services.phpmyadmin.loadbalancer.server.port: "80"
 
 volumes:
   mysql_data_prod:
@@ -77,3 +80,6 @@ volumes:
 networks:
   greenvision-net:
     driver: bridge
+  traefik-net:
+    external: true
+
