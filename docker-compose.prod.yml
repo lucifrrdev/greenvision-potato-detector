@@ -1,10 +1,11 @@
 services:
   # 1. Backend Laravel (PHP 8.2) - Production
   laravel_backend:
-    image: bitnamilegacy/laravel:10
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: bitnamilegacy/laravel:10-custom
     restart: always
-    volumes:
-      - ./app:/app
     env_file:
       - ./app/.env.production
     depends_on:
