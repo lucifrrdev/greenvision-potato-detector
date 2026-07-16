@@ -14,6 +14,7 @@ services:
       - local
     labels:
       traefik.enable: "true"
+      traefik.docker.network: "local"
       traefik.http.routers.laravel.rule: "Host(`greenvision.catrova.com`)"
       traefik.http.routers.laravel.entrypoints: "web"
       traefik.http.services.laravel.loadbalancer.server.port: "8000"
@@ -47,6 +48,7 @@ services:
       - local
     labels:
       traefik.enable: "true"
+      traefik.docker.network: "local"
       traefik.http.routers.python_ai.rule: "Host(`greenvision-ai.catrova.com`)"
       traefik.http.routers.python_ai.entrypoints: "web"
       traefik.http.services.python_ai.loadbalancer.server.port: "8001"
@@ -69,6 +71,7 @@ services:
       - local
     labels:
       traefik.enable: "true"
+      traefik.docker.network: "local"
       traefik.http.routers.phpmyadmin.rule: "Host(`pma.greenvision.catrova.com`)"
       traefik.http.routers.phpmyadmin.entrypoints: "web"
       traefik.http.services.phpmyadmin.loadbalancer.server.port: "80"
@@ -82,5 +85,6 @@ networks:
     driver: bridge
   local:
     external: true
+
 
 
