@@ -11,7 +11,7 @@ services:
       - mysql_db
     networks:
       - greenvision-net
-      - traefik-net
+      - local
     labels:
       traefik.enable: "true"
       traefik.http.routers.laravel.rule: "Host(`greenvision.catrova.com`)"
@@ -44,7 +44,7 @@ services:
       - ./python/.env.production
     networks:
       - greenvision-net
-      - traefik-net
+      - local
     labels:
       traefik.enable: "true"
       traefik.http.routers.python_ai.rule: "Host(`greenvision-ai.catrova.com`)"
@@ -66,7 +66,7 @@ services:
       - mysql_db
     networks:
       - greenvision-net
-      - traefik-net
+      - local
     labels:
       traefik.enable: "true"
       traefik.http.routers.phpmyadmin.rule: "Host(`pma.greenvision.catrova.com`)"
@@ -80,6 +80,7 @@ volumes:
 networks:
   greenvision-net:
     driver: bridge
-  traefik-net:
+  local:
     external: true
+
 
