@@ -135,6 +135,11 @@
                             <a href="{{ route('history') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('history') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                                 Hasil Tanaman
                             </a>
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ route('admin.dashboard') }}" class="px-1 py-2 rounded-md text-xs font-bold text-red-650 hover:text-red-800 transition-colors {{ Request::is('admin*') ? 'text-red-750' : '' }}">
+                                    🛡️ Panel Admin
+                                </a>
+                            @endif
                         @endauth
                     </div>
 
@@ -193,6 +198,11 @@
                     <a href="{{ route('history') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('history') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
                         Hasil Tanaman
                     </a>
+                    @if(auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md text-base font-bold text-red-650 hover:bg-red-50/20">
+                            🛡️ Panel Admin
+                        </a>
+                    @endif
                     <a href="{{ route('profile') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('profile') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
                         Profil
                     </a>

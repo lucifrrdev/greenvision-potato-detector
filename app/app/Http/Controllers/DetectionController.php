@@ -129,7 +129,11 @@ class DetectionController extends Controller
 
     public function showDetail($id)
     {
-        $detection = Detection::where('user_id', Auth::id())->findOrFail($id);
+        if (Auth::user()->role === 'admin') {
+            $detection = Detection::findOrFail($id);
+        } else {
+            $detection = Detection::where('user_id', Auth::id())->findOrFail($id);
+        }
         return view('detail', compact('detection'));
     }
 

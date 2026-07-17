@@ -58,3 +58,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::post('/profile', [AuthController::class, 'updateProfile']);
 });
+
+// Admin Route Group
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('users', \App\Http\Controllers\AdminUserController::class)->except(['show']);
+    Route::get('/detections', [\App\Http\Controllers\AdminDetectionController::class, 'index'])->name('detections.index');
+    Route::delete('/detections/{id}', [\App\Http\Controllers\AdminDetectionController::class, 'destroy'])->name('detections.destroy');
+});
+
