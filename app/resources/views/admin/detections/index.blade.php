@@ -89,7 +89,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex justify-end gap-2">
-                                <a href="{{ route('history.detail', $det->id) }}" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-md transition-colors text-xs font-bold">
+                                <a href="{{ route('admin.detections.show', $det->id) }}" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-md transition-colors text-xs font-bold">
                                     👁️ Detail
                                 </a>
                                 <form action="{{ route('admin.detections.destroy', $det->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus riwayat diagnosis ini secara permanen dari server?')" class="inline">

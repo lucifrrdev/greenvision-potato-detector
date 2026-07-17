@@ -26,6 +26,12 @@ class AdminDetectionController extends Controller
         return view('admin.detections.index', compact('detections', 'search'));
     }
 
+    public function show($id)
+    {
+        $detection = Detection::with('user')->findOrFail($id);
+        return view('admin.detections.show', compact('detection'));
+    }
+
     public function destroy($id)
     {
         $detection = Detection::findOrFail($id);

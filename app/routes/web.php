@@ -64,6 +64,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('users', \App\Http\Controllers\AdminUserController::class)->except(['show']);
     Route::get('/detections', [\App\Http\Controllers\AdminDetectionController::class, 'index'])->name('detections.index');
+    Route::get('/detections/{id}', [\App\Http\Controllers\AdminDetectionController::class, 'show'])->name('detections.show');
     Route::delete('/detections/{id}', [\App\Http\Controllers\AdminDetectionController::class, 'destroy'])->name('detections.destroy');
 });
 

@@ -16,59 +16,40 @@
             <div class="space-y-3">
                 <h3 class="text-xl font-extrabold text-theme-blue flex items-center">
                     <span class="w-8 h-8 rounded-full bg-theme-green/10 text-theme-green flex items-center justify-center mr-2 text-base"><i class="fa-solid fa-microchip text-xs"></i></span>
-                    Arsitektur Jaringan Saraf Konvolusional (CNN)
+                    Arsitektur Transfer Learning (MobileNetV2)
                 </h3>
                 <p class="text-theme-textMuted text-xs leading-relaxed">
-                    Greenvision menggunakan arsitektur <strong>Convolutional Neural Network (CNN) Sequential</strong> yang dirancang secara custom menggunakan framework <strong>TensorFlow/Keras</strong>. Model ini mengimplementasikan ekstraksi fitur spasial secara bertingkat melalui empat blok konvolusi untuk memindai dan mengidentifikasi berbagai jenis penyakit dan kondisi pada permukaan daun kentang. Model mengklasifikasikan citra ke dalam <strong>8 kelas diagnosis</strong>.
+                    Greenvision menggunakan arsitektur <strong>MobileNetV2</strong> berbasis transfer learning yang dioptimalkan menggunakan framework <strong>TensorFlow/Keras</strong>. Model ini menggunakan bobot pre-trained ImageNet untuk ekstraksi fitur yang cepat dan efisien pada perangkat dengan sumber daya terbatas, kemudian dilatih khusus (fine-tuning) untuk mengklasifikasikan citra ke dalam <strong>4 kelas diagnosis</strong>.
                 </p>
 
                 <div class="bg-theme-blue text-white/90 p-4 rounded-xl font-mono text-xs leading-relaxed overflow-x-auto shadow-inner">
-                    <div class="text-theme-green font-bold mb-2">// Struktur Layer Convolutional Neural Network (CNN)</div>
+                    <div class="text-theme-green font-bold mb-2">// Struktur Layer Model MobileNetV2</div>
                     <div class="text-white/60">// Input: Citra RGB daun kentang 256×256 piksel</div>
                     <div class="mt-1">Input Layer  : Shape <span class="text-emerald-300">(256, 256, 3)</span> — RGB Image</div>
-                    <div>Rescaling    : <span class="text-emerald-300">1./255</span> — Normalisasi piksel [0,255] → [0,1]</div>
-                    <div class="mt-2 text-white/60">// Feature Extraction Blocks</div>
-                    <div>Block 1      : Conv2D (<span class="text-amber-300">32</span> filters, 3×3, ReLU) → MaxPooling2D (2×2)</div>
-                    <div>Block 2      : Conv2D (<span class="text-amber-300">64</span> filters, 3×3, ReLU) → MaxPooling2D (2×2)</div>
-                    <div>Block 3      : Conv2D (<span class="text-amber-300">64</span> filters, 3×3, ReLU) → MaxPooling2D (2×2)</div>
-                    <div>Block 4      : Conv2D (<span class="text-amber-300">64</span> filters, 3×3, ReLU) → MaxPooling2D (2×2)</div>
+                    <div>Data Augment: RandomFlip, RandomRotation, RandomZoom (Training Only)</div>
+                    <div>Rescaling    : Normalisasi piksel ke range [-1, 1]</div>
+                    <div class="mt-2 text-white/60">// Feature Extractor (Base Model)</div>
+                    <div>MobileNetV2  : Functional Layer (<span class="text-amber-300">154</span> layers, ImageNet weights)</div>
                     <div class="mt-2 text-white/60">// Classification Head</div>
-                    <div>Flatten      : Mengubah feature map 3D → vektor 1D</div>
-                    <div>Dense        : <span class="text-amber-300">64</span> units, aktivasi ReLU</div>
-                    <div>Output       : Dense (<span class="text-amber-300">8</span> units, <span class="text-emerald-300">Softmax</span>) — Probabilitas 8 kelas</div>
+                    <div>GlobalAvgPool: Mengubah feature map 3D → vektor 1D (1280 units)</div>
+                    <div>Dropout      : Rate <span class="text-amber-300">0.2</span> untuk mencegah overfitting</div>
+                    <div>Output       : Dense (<span class="text-amber-300">4</span> units, <span class="text-emerald-300">Softmax</span>) — Probabilitas 4 kelas</div>
                 </div>
             </div>
         </div>
 
-        {{-- Section 2: 8 Kelas Diagnosis --}}
+        {{-- Section 2: 4 Kelas Diagnosis --}}
         <div class="bg-white rounded-2xl p-5 md:p-6 border border-theme-borderLight shadow space-y-6 text-left">
             <div class="space-y-3">
                 <h3 class="text-xl font-extrabold text-theme-blue flex items-center">
                     <span class="w-8 h-8 rounded-full bg-theme-green/10 text-theme-green flex items-center justify-center mr-2 text-base"><i class="fa-solid fa-database text-xs"></i></span>
-                    8 Kelas Diagnosis Penyakit & Dataset
+                    4 Kelas Diagnosis Penyakit & Dataset
                 </h3>
                 <p class="text-theme-textMuted text-xs leading-relaxed">
-                    Model CNN dilatih untuk mengklasifikasikan citra daun kentang ke dalam <strong>8 kategori diagnosis</strong> yang mencakup berbagai jenis patogen, organisme pengganggu, serta validasi citra bukan daun kentang. Setiap kelas menggunakan dataset citra berkualitas tinggi yang dikurasi secara ilmiah.
+                    Model MobileNetV2 dilatih untuk mengklasifikasikan citra daun kentang ke dalam <strong>4 kategori diagnosis</strong> sesuai dengan dataset yang dikurasi secara ilmiah.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
-                    {{-- Bacteria --}}
-                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
-                        <div class="bg-orange-50 border-b border-orange-200 p-3">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xs"><i class="fa-solid fa-bacterium"></i></div>
-                                <div>
-                                    <div class="font-extrabold text-orange-700 text-xs">Bacteria</div>
-                                    <div class="text-[0.55rem] text-orange-500 font-bold">Kelas 0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Infeksi bakteri patogen (Ralstonia, Erwinia, Pectobacterium)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Lesi berair, layu bakteri, busuk lunak pada batang dan daun</p>
-                        </div>
-                    </div>
-
                     {{-- Bukan Daun Kentang --}}
                     <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
                         <div class="bg-gray-50 border-b border-gray-200 p-3">
@@ -76,7 +57,7 @@
                                 <div class="w-7 h-7 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs"><i class="fa-solid fa-ban"></i></div>
                                 <div>
                                     <div class="font-extrabold text-gray-700 text-xs">Bukan Daun Kentang</div>
-                                    <div class="text-[0.55rem] text-gray-500 font-bold">Kelas 1</div>
+                                    <div class="text-[0.55rem] text-gray-500 font-bold">Bukan_Daun_Kentang</div>
                                 </div>
                             </div>
                         </div>
@@ -86,20 +67,37 @@
                         </div>
                     </div>
 
-                    {{-- Fungi --}}
+                    {{-- Early Blight --}}
                     <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
                         <div class="bg-amber-50 border-b border-amber-200 p-3">
                             <div class="flex items-center space-x-2">
                                 <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs"><i class="fa-solid fa-seedling"></i></div>
                                 <div>
-                                    <div class="font-extrabold text-amber-700 text-xs">Fungi</div>
-                                    <div class="text-[0.55rem] text-amber-500 font-bold">Kelas 2</div>
+                                    <div class="font-extrabold text-amber-700 text-xs">Early Blight</div>
+                                    <div class="text-[0.55rem] text-amber-500 font-bold">Potato___Early_blight</div>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Infeksi jamur (Alternaria solani — Early Blight)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Bercak cokelat kering melingkar konsentris (target spot) pada daun tua</p>
+                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Infeksi jamur (Alternaria solani)</p>
+                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Bercak cokelat kering melingkar konsentris (target spot) pada daun</p>
+                        </div>
+                    </div>
+
+                    {{-- Late Blight --}}
+                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
+                        <div class="bg-red-50 border-b border-red-200 p-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs"><i class="fa-solid fa-skull-crossbones"></i></div>
+                                <div>
+                                    <div class="font-extrabold text-red-700 text-xs">Late Blight</div>
+                                    <div class="text-[0.55rem] text-red-500 font-bold">Potato___Late_blight</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 space-y-1">
+                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Oomycete Phytophthora infestans</p>
+                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Lesi basah kehitaman, miselium putih, berkembang cepat pada cuaca dingin/basah</p>
                         </div>
                     </div>
 
@@ -110,81 +108,13 @@
                                 <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs"><i class="fa-solid fa-heart-pulse"></i></div>
                                 <div>
                                     <div class="font-extrabold text-emerald-700 text-xs">Healthy</div>
-                                    <div class="text-[0.55rem] text-emerald-500 font-bold">Kelas 3</div>
+                                    <div class="text-[0.55rem] text-emerald-500 font-bold">Potato___healthy</div>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 space-y-1">
                             <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Kondisi:</strong> Daun kentang sehat, bebas patogen</p>
                             <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Ciri:</strong> Hijau segar, tidak ada bercak, klorosis, atau nekrosis patologis</p>
-                        </div>
-                    </div>
-
-                    {{-- Nematode --}}
-                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
-                        <div class="bg-yellow-50 border-b border-yellow-200 p-3">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-xs"><i class="fa-solid fa-worm"></i></div>
-                                <div>
-                                    <div class="font-extrabold text-yellow-700 text-xs">Nematode</div>
-                                    <div class="text-[0.55rem] text-yellow-500 font-bold">Kelas 4</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Cacing nematoda parasit (Globodera, Meloidogyne)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Daun menguning, kerdil, layu meskipun cukup air, akar bergumpal</p>
-                        </div>
-                    </div>
-
-                    {{-- Pest --}}
-                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
-                        <div class="bg-rose-50 border-b border-rose-200 p-3">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs"><i class="fa-solid fa-bugs"></i></div>
-                                <div>
-                                    <div class="font-extrabold text-rose-700 text-xs">Pest</div>
-                                    <div class="text-[0.55rem] text-rose-500 font-bold">Kelas 5</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Serangan hama (kutu daun, ulat, thrips, kumbang Colorado)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Lubang gigitan, daun mengeriting, bekas makan serangga</p>
-                        </div>
-                    </div>
-
-                    {{-- Phytopthora --}}
-                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
-                        <div class="bg-red-50 border-b border-red-200 p-3">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs"><i class="fa-solid fa-skull-crossbones"></i></div>
-                                <div>
-                                    <div class="font-extrabold text-red-700 text-xs">Phytopthora</div>
-                                    <div class="text-[0.55rem] text-red-500 font-bold">Kelas 6</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Oomycete Phytophthora infestans (Late Blight)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Lesi basah kehitaman, miselium putih, penyakit paling destruktif pada kentang</p>
-                        </div>
-                    </div>
-
-                    {{-- Virus --}}
-                    <div class="border border-theme-borderLight rounded-xl overflow-hidden bg-theme-bgLight group hover:shadow-md transition-all">
-                        <div class="bg-purple-50 border-b border-purple-200 p-3">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs"><i class="fa-solid fa-virus"></i></div>
-                                <div>
-                                    <div class="font-extrabold text-purple-700 text-xs">Virus</div>
-                                    <div class="text-[0.55rem] text-purple-500 font-bold">Kelas 7</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 space-y-1">
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Penyebab:</strong> Infeksi virus (PVX, PVY, PLRV, Mosaic Virus)</p>
-                            <p class="text-[0.65rem] text-theme-textMuted leading-relaxed"><strong>Gejala:</strong> Mosaik, daun keriting, kerdil, nekrosis vena, perubahan warna</p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +145,7 @@
                     </div>
                     <div class="border border-theme-borderLight rounded-xl p-4 bg-theme-bgLight">
                         <div class="text-[0.65rem] text-theme-textMuted uppercase font-bold tracking-wider">Epochs</div>
-                        <div class="text-base font-extrabold text-theme-blue mt-1">10 Iterasi</div>
+                        <div class="text-base font-extrabold text-theme-blue mt-1">8 Iterasi</div>
                         <p class="text-[0.65rem] text-theme-textMuted mt-1">Jumlah siklus penuh pelatihan terhadap seluruh dataset</p>
                     </div>
                     <div class="border border-theme-borderLight rounded-xl p-4 bg-theme-bgLight">
@@ -236,11 +166,11 @@
                 </div>
 
                 <div class="bg-theme-blue text-white/90 p-4 rounded-xl font-mono text-xs leading-relaxed overflow-x-auto shadow-inner mt-3">
-                    <div class="text-theme-green font-bold mb-2">// Konfigurasi Parameter (train.py)</div>
+                    <div class="text-theme-green font-bold mb-2">// Konfigurasi Parameter (train_mobilenet.py)</div>
                     <div>IMAGE_SIZE  = <span class="text-amber-300">256</span></div>
                     <div>BATCH_SIZE  = <span class="text-amber-300">32</span></div>
                     <div>CHANNELS    = <span class="text-amber-300">3</span></div>
-                    <div>EPOCHS      = <span class="text-amber-300">10</span></div>
+                    <div>EPOCHS      = <span class="text-amber-300">8</span></div>
                     <div>DATASET_DIR = <span class="text-emerald-300">"dataset"</span></div>
                     <div class="mt-2 text-white/60">// Optimisasi Dataset Pipeline</div>
                     <div>AUTOTUNE    = <span class="text-emerald-300">tf.data.AUTOTUNE</span></div>
@@ -280,7 +210,7 @@
                     <div class="bg-theme-bgLight rounded-xl p-4 border border-theme-borderLight text-center space-y-2">
                         <div class="w-10 h-10 rounded-full bg-theme-blue text-white flex items-center justify-center mx-auto text-sm font-bold">4</div>
                         <div class="text-xs font-bold text-theme-blue">Prediksi CNN</div>
-                        <p class="text-[0.65rem] text-theme-textMuted">Model TensorFlow memprediksi probabilitas 8 kelas via Softmax</p>
+                        <p class="text-[0.65rem] text-theme-textMuted">Model TensorFlow memprediksi probabilitas 4 kelas via Softmax</p>
                     </div>
                     <div class="bg-theme-bgLight rounded-xl p-4 border border-theme-borderLight text-center space-y-2">
                         <div class="w-10 h-10 rounded-full bg-theme-green text-white flex items-center justify-center mx-auto text-sm font-bold">5</div>
@@ -377,7 +307,7 @@
                 <div class="mt-1 text-white/60">// Response (JSON)</div>
                 <div>{</div>
                 <div>  "<span class="text-emerald-300">status</span>"     : "success",</div>
-                <div>  "<span class="text-emerald-300">prediction</span>" : "Phytopthora",</div>
+                <div>  "<span class="text-emerald-300">prediction</span>" : "Potato___Late_blight",</div>
                 <div>  "<span class="text-emerald-300">confidence</span>" : 0.9847</div>
                 <div>}</div>
             </div>
@@ -402,7 +332,7 @@
                         <i class="fa-solid fa-chart-line text-theme-green"></i>
                         <span class="text-xs font-bold text-theme-blue">training_history.png</span>
                     </div>
-                    <p class="text-[0.65rem] text-theme-textMuted leading-relaxed">Grafik visualisasi Training vs Validation Accuracy dan Loss selama 10 epoch pelatihan. Dihasilkan otomatis oleh Matplotlib.</p>
+                    <p class="text-[0.65rem] text-theme-textMuted leading-relaxed">Grafik visualisasi Training vs Validation Accuracy dan Loss selama 8 epoch pelatihan. Dihasilkan otomatis oleh Matplotlib.</p>
                 </div>
             </div>
         </div>

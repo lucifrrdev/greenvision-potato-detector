@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app) # Mengizinkan request dari frontend Laravel
 
 MODEL_PATH = "potato_disease_model.h5"
-CLASS_NAMES = ["Bacteria", "Bukan_Daun_Kentang", "Fungi", "Healthy", "Nematode", "Pest", "Phytopthora", "Virus"]
+CLASS_NAMES = ['Bukan_Daun_Kentang', 'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
 IMAGE_SIZE = 256
 
 model = None
