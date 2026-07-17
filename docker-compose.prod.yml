@@ -1,16 +1,24 @@
 services:
   # 1. Backend Laravel (PHP 8.2) - Production
   laravel_backend:
-    image: bitnamilegacy/laravel:10
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: bitnamilegacy/laravel:10-custom
     restart: always
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./app:/app
     env_file:
       - ./app/.env.production
     depends_on:
       - mysql_db
+    networks:
+      - greenvision-net
+      - local
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "local"
+      traefik.http.routers.laravel.rule: "Host(`greenvision.catrova.com`)"
+      traefik.http.routers.laravel.entrypoints: "web"
+      traefik.http.services.laravel.loadbalancer.server.port: "8000"
 
   # 2. Database MySQL - Production
   mysql_db:
@@ -25,6 +33,8 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpass
     volumes:
       - mysql_data_prod:/var/lib/mysql
+    networks:
+      - greenvision-net
 
   # 3. AI Python Model & API (Flask) - Production
   python_ai:
@@ -32,12 +42,17 @@ services:
       context: ./python
       dockerfile: Dockerfile
     restart: always
-    ports:
-      - "8001:8001"
-    volumes:
-      - ./python:/app
     env_file:
       - ./python/.env.production
+    networks:
+      - greenvision-net
+      - local
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "local"
+      traefik.http.routers.python_ai.rule: "Host(`greenvision-ai.catrova.com`)"
+      traefik.http.routers.python_ai.entrypoints: "web"
+      traefik.http.services.python_ai.loadbalancer.server.port: "8001"
 
   # 4. phpMyAdmin (Optional/Disabled in Production by default for security)
   # Uncomment if database management is required in production environment
@@ -45,8 +60,6 @@ services:
     image: phpmyadmin:latest
     platform: linux/arm64
     restart: always
-    ports:
-      - "8002:80"
     environment:
       PMA_HOST: mysql_db
       PMA_PORT: 3306
@@ -54,7 +67,25 @@ services:
       PMA_PASSWORD: rootpass
     depends_on:
       - mysql_db
+    networks:
+      - greenvision-net
+      - local
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "local"
+      traefik.http.routers.phpmyadmin.rule: "Host(`pma.greenvision.catrova.com`)"
+      traefik.http.routers.phpmyadmin.entrypoints: "web"
+      traefik.http.services.phpmyadmin.loadbalancer.server.port: "80"
 
 volumes:
   mysql_data_prod:
     driver: local
+
+networks:
+  greenvision-net:
+    driver: bridge
+  local:
+    external: true
+
+
+
