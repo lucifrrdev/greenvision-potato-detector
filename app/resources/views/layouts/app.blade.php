@@ -82,26 +82,6 @@
 
     <!-- Header Area Start -->
     <header class="relative z-50">
-        <!-- Header Top Area -->
-        <div class="bg-theme-blue text-white/80 py-2.5 text-xs font-semibold tp-border-bottom hidden lg:block">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="hover:text-white transition-colors flex items-center">
-                        <i class="fa-sharp fa-solid fa-location-dot text-theme-green mr-2"></i> Manchester 21, Zurich, CH
-                    </a>
-                    <a href="mailto:example@gmail.com" class="hover:text-white transition-colors flex items-center">
-                        <i class="fa-regular fa-envelope text-theme-green mr-2"></i> example@gmail.com
-                    </a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <span>Follow Us On</span>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-
         <!-- Header Bottom Area -->
         <nav class="bg-white border-b border-theme-borderLight sticky top-0 backdrop-blur-md bg-white/95">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,23 +96,20 @@
 
                     <!-- Navigation Links (Desktop) -->
                     <div class="hidden md:flex items-center space-x-1">
-                        <a href="{{ route('home') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('home') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('home') }}" class="px-1 py-2 rounded-md text-xs transition-colors {{ Route::is('home') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Home
                         </a>
-                        <a href="{{ route('company-profile') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('company-profile') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                        <a href="{{ route('company-profile') }}" class="px-1 py-2 rounded-md text-xs transition-colors {{ Route::is('company-profile') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                             Profil Perusahaan
                         </a>
-                        <a href="{{ route('about') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('about') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
-                            Tentang RAD
-                        </a>
-                        <a href="{{ route('project') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('project') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
-                            Project AI
-                        </a>
-                        <a href="{{ route('input') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('input') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
-                            Deteksi Penyakit
-                        </a>
                         @auth
-                            <a href="{{ route('history') }}" class="px-1 py-2 rounded-md text-xs  transition-colors {{ Route::is('history') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                            <a href="{{ route('about') }}" class="px-1 py-2 rounded-md text-xs transition-colors {{ Route::is('about') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                                Cara Kerja Sistem
+                            </a>
+                            <a href="{{ route('input') }}" class="px-1 py-2 rounded-md text-xs transition-colors {{ Route::is('input') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
+                                Deteksi Penyakit
+                            </a>
+                            <a href="{{ route('history') }}" class="px-1 py-2 rounded-md text-xs transition-colors {{ Route::is('history') ? 'text-theme-green' : 'text-theme-textDark hover:text-theme-green' }}">
                                 Hasil Tanaman
                             </a>
                             @if(auth()->user()->role === 'admin')
@@ -185,16 +162,13 @@
                 <a href="{{ route('company-profile') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('company-profile') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
                     Profil Perusahaan
                 </a>
-                <a href="{{ route('about') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('about') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
-                    Tentang RAD
-                </a>
-                <a href="{{ route('project') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('project') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
-                    Project AI
-                </a>
-                <a href="{{ route('input') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('input') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
-                    Deteksi Penyakit
-                </a>
                 @auth
+                    <a href="{{ route('about') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('about') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
+                        Cara Kerja Sistem
+                    </a>
+                    <a href="{{ route('input') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('input') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
+                        Deteksi Penyakit
+                    </a>
                     <a href="{{ route('history') }}" class="block px-3 py-2 rounded-md text-base font-bold {{ Route::is('history') ? 'text-theme-green bg-theme-bgLight' : 'text-theme-textDark hover:bg-theme-bgLight' }}">
                         Hasil Tanaman
                     </a>

@@ -13,22 +13,40 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <!-- Left Content -->
             <div class="lg:col-span-7 space-y-4 text-left">
-                <span class="tp-section-title-pre">
-                    Digital Crop Protection Platform
-                </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-theme-blue leading-tight tracking-tight">
-                    Lindungi Hasil Panen Kentang dengan Deteksi Dini AI.
-                </h2>
-                <p class="text-theme-textMuted text-sm md:text-base max-w-xl leading-relaxed">
-                    greenvision memadukan teknologi Convolutional Neural Network (CNN) untuk mendeteksi penyakit daun kentang secara akurat, memberi solusi pestisida tepat guna, serta panduan penyiraman berkala.
-                </p>
-                <div class="pt-2 flex flex-wrap gap-3 items-center">
-                    <a class="tp-btn py-3 px-6 text-sm" href="{{ route('input') }}">Mulai Analisis Instan</a>
-                    <a class="text-theme-blue hover:text-theme-green font-bold text-sm transition-colors flex items-center" href="{{ route('about') }}">
-                        <span class="w-8 h-8 rounded-full bg-theme-green/10 flex items-center justify-center mr-2 text-theme-green"><i class="fa-solid fa-play text-[0.65rem]"></i></span>
-                        Cara Kerja Sistem
-                    </a>
-                </div>
+                @auth
+                    <span class="tp-section-title-pre">
+                        🌾 Dashboard Deteksi Petani
+                    </span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-theme-blue leading-tight tracking-tight">
+                        Selamat Datang Kembali, {{ auth()->user()->name }}!
+                    </h2>
+                    <p class="text-theme-textMuted text-sm md:text-base max-w-xl leading-relaxed">
+                        Sistem kecerdasan buatan Greenvision siap membantu memindai dan mendiagnosis kesehatan daun tanaman kentang Anda secara akurat untuk hasil panen optimal.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 items-center">
+                        <a class="tp-btn py-3 px-6 text-sm" href="{{ route('input') }}">Mulai Analisis Instan</a>
+                        <a class="text-theme-blue hover:text-theme-green font-bold text-sm transition-colors flex items-center" href="{{ route('about') }}">
+                            <span class="w-8 h-8 rounded-full bg-theme-green/10 flex items-center justify-center mr-2 text-theme-green"><i class="fa-solid fa-play text-[0.65rem]"></i></span>
+                            Cara Kerja Sistem
+                        </a>
+                    </div>
+                @else
+                    <span class="tp-section-title-pre">
+                        Digital Crop Protection Platform
+                    </span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-theme-blue leading-tight tracking-tight">
+                        Lindungi Hasil Panen Kentang dengan Deteksi Dini AI.
+                    </h2>
+                    <p class="text-theme-textMuted text-sm md:text-base max-w-xl leading-relaxed">
+                        greenvision memadukan teknologi Convolutional Neural Network (CNN) untuk mendeteksi penyakit daun kentang secara akurat, memberi solusi pestisida tepat guna, serta panduan penyiraman berkala.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 items-center">
+                        <a class="tp-btn py-3 px-6 text-sm" href="{{ route('login') }}">Masuk untuk Mulai Analisis</a>
+                        <a class="bg-white border-2 border-theme-green text-theme-green hover:bg-theme-green hover:text-white font-bold py-3 px-6 rounded text-sm transition-all" href="{{ route('register') }}">
+                            Daftar Akun Petani
+                        </a>
+                    </div>
+                @endauth
             </div>
             <!-- Right Banner Image / Illustration -->
             <div class="lg:col-span-5 relative flex justify-center w-full">

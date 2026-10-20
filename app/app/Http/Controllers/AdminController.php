@@ -28,6 +28,11 @@ class AdminController extends Controller
                   ->orWhere('disease_name', 'like', '%busuk%');
         })->count();
 
+        $sickCount = Detection::where(function($query) {
+            $query->where('disease_name', 'not like', '%sehat%')
+                  ->where('disease_name', 'not like', '%healthy%');
+        })->count();
+
         $recentDetections = Detection::with('user')->latest()->limit(5)->get();
         $recentUsers = User::latest()->limit(5)->get();
 
@@ -35,6 +40,7 @@ class AdminController extends Controller
             'totalUsers',
             'totalDetections',
             'healthyCount',
+            'sickCount',
             'earlyBlightCount',
             'lateBlightCount',
             'recentDetections',

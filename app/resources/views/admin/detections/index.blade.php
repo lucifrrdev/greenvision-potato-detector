@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Kelola Hasil Scan - Greenvision')
+@section('title', 'Kelola Data Deteksi - Admin Greenvision')
 
 @section('content')
 <!-- Admin Header -->
 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-theme-borderLight pb-5 mb-8 gap-4">
     <div>
-        <span class="tp-section-title-pre">🔍 RIWAYAT DETEKSI</span>
-        <h1 class="text-3xl font-extrabold text-theme-blue">Kelola Hasil Scan</h1>
+        <span class="tp-section-title-pre">🔍 USE CASE ADMIN</span>
+        <h1 class="text-3xl font-extrabold text-theme-blue">Kelola Data Deteksi</h1>
     </div>
 </div>
 

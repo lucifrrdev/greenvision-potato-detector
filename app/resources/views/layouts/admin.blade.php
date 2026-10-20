@@ -74,21 +74,21 @@
 
             <!-- Sidebar Navigation Links -->
             <nav class="mt-6 px-4 space-y-1">
-                <div class="text-[10px] font-bold text-theme-textMuted uppercase tracking-wider px-3 mb-2">Menu Utama</div>
+                <div class="text-[10px] font-bold text-theme-textMuted uppercase tracking-wider px-3 mb-2">Menu Use Case Admin</div>
                 
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors {{ Route::is('admin.dashboard') ? 'sidebar-link-active' : 'text-theme-textMuted hover:bg-theme-bgLight hover:text-theme-blue' }}">
                     <span class="text-lg">📊</span>
-                    <span>Dashboard</span>
+                    <span>Kelola Data Admin</span>
                 </a>
 
                 <a href="{{ route('admin.users.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors {{ Request::is('admin/users*') ? 'sidebar-link-active' : 'text-theme-textMuted hover:bg-theme-bgLight hover:text-theme-blue' }}">
                     <span class="text-lg">👥</span>
-                    <span>Kelola Pengguna</span>
+                    <span>Kelola Data Pengguna</span>
                 </a>
 
                 <a href="{{ route('admin.detections.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors {{ Request::is('admin/detections*') ? 'sidebar-link-active' : 'text-theme-textMuted hover:bg-theme-bgLight hover:text-theme-blue' }}">
                     <span class="text-lg">📸</span>
-                    <span>Kelola Hasil Scan</span>
+                    <span>Kelola Data Deteksi</span>
                 </a>
             </nav>
         </div>

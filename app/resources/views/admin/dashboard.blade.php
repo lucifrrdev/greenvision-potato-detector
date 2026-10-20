@@ -1,69 +1,80 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Dashboard - Greenvision')
+@section('title', 'Kelola Data Admin - Greenvision')
 
 @section('content')
 <!-- Admin Header -->
 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-theme-borderLight pb-5 mb-8 gap-4">
     <div>
-        <span class="tp-section-title-pre">📊 RINGKASAN SISTEM</span>
-        <h1 class="text-3xl font-extrabold text-theme-blue">Dashboard Analisis</h1>
+        <span class="tp-section-title-pre">📊 PANEL ADMINISTRATOR</span>
+        <h1 class="text-3xl font-extrabold text-theme-blue">Kelola Data Admin</h1>
     </div>
 </div>
 
 <!-- Statistik KPI Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
     <!-- Total Pengguna -->
-    <div class="bg-white rounded-xl p-6 border border-theme-borderLight shadow-sm flex items-center justify-between">
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
         <div>
-            <p class="text-xs font-semibold text-theme-textMuted uppercase tracking-wider">Total Pengguna</p>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Total Pengguna</p>
             <h3 class="text-2xl font-bold text-theme-blue mt-1">{{ $totalUsers }}</h3>
         </div>
-        <div class="w-12 h-12 rounded-lg bg-emerald-50 text-theme-green flex items-center justify-center text-xl font-bold">
+        <div class="w-11 h-11 rounded-lg bg-emerald-50 text-theme-green flex items-center justify-center text-lg font-bold">
             👥
         </div>
     </div>
 
     <!-- Total Scan -->
-    <div class="bg-white rounded-xl p-6 border border-theme-borderLight shadow-sm flex items-center justify-between">
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
         <div>
-            <p class="text-xs font-semibold text-theme-textMuted uppercase tracking-wider">Total Scan</p>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Total Scan</p>
             <h3 class="text-2xl font-bold text-theme-blue mt-1">{{ $totalDetections }}</h3>
         </div>
-        <div class="w-12 h-12 rounded-lg bg-emerald-50 text-theme-green flex items-center justify-center text-xl font-bold">
+        <div class="w-11 h-11 rounded-lg bg-emerald-50 text-theme-green flex items-center justify-center text-lg font-bold">
             📸
         </div>
     </div>
 
-    <!-- Sehat -->
-    <div class="bg-white rounded-xl p-6 border border-theme-borderLight shadow-sm flex items-center justify-between">
+    <!-- Daun Sehat -->
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
         <div>
-            <p class="text-xs font-semibold text-theme-textMuted uppercase tracking-wider">Daun Sehat</p>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Daun Sehat</p>
             <h3 class="text-2xl font-bold text-emerald-600 mt-1">{{ $healthyCount }}</h3>
         </div>
-        <div class="w-12 h-12 rounded-lg bg-emerald-100/50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+        <div class="w-11 h-11 rounded-lg bg-emerald-100/50 text-emerald-600 flex items-center justify-center text-lg font-bold">
             🍃
         </div>
     </div>
 
-    <!-- Early Blight -->
-    <div class="bg-white rounded-xl p-6 border border-theme-borderLight shadow-sm flex items-center justify-between">
+    <!-- Daun Sakit -->
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
         <div>
-            <p class="text-xs font-semibold text-theme-textMuted uppercase tracking-wider">Early Blight</p>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Daun Sakit</p>
+            <h3 class="text-2xl font-bold text-rose-600 mt-1">{{ $sickCount }}</h3>
+        </div>
+        <div class="w-11 h-11 rounded-lg bg-rose-100/50 text-rose-600 flex items-center justify-center text-lg font-bold">
+            🦠
+        </div>
+    </div>
+
+    <!-- Early Blight -->
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
+        <div>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Early Blight</p>
             <h3 class="text-2xl font-bold text-amber-600 mt-1">{{ $earlyBlightCount }}</h3>
         </div>
-        <div class="w-12 h-12 rounded-lg bg-amber-100/50 text-amber-600 flex items-center justify-center text-xl font-bold">
+        <div class="w-11 h-11 rounded-lg bg-amber-100/50 text-amber-600 flex items-center justify-center text-lg font-bold">
             🍂
         </div>
     </div>
 
     <!-- Late Blight -->
-    <div class="bg-white rounded-xl p-6 border border-theme-borderLight shadow-sm flex items-center justify-between">
+    <div class="bg-white rounded-xl p-5 border border-theme-borderLight shadow-sm flex items-center justify-between">
         <div>
-            <p class="text-xs font-semibold text-theme-textMuted uppercase tracking-wider">Late Blight</p>
+            <p class="text-[11px] font-semibold text-theme-textMuted uppercase tracking-wider">Late Blight</p>
             <h3 class="text-2xl font-bold text-rose-600 mt-1">{{ $lateBlightCount }}</h3>
         </div>
-        <div class="w-12 h-12 rounded-lg bg-rose-100/50 text-rose-600 flex items-center justify-center text-xl font-bold">
+        <div class="w-11 h-11 rounded-lg bg-rose-100/50 text-rose-600 flex items-center justify-center text-lg font-bold">
             🥀
         </div>
     </div>

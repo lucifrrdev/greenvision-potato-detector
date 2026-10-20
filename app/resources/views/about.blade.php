@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tentang Greenvision - Sistem Proteksi Tanaman')
+@section('title', 'Cara Kerja Sistem - Greenvision')
 
 @section('content')
 <div class="py-10 bg-white">
@@ -23,10 +23,10 @@
 
             <!-- Right Column: Content -->
             <div class="lg:col-span-6 space-y-4">
-                <span class="tp-section-title-pre">System Architecture</span>
-                <h2 class="text-3xl font-extrabold text-theme-blue">Pengembangan Sistem Cepat & Andal</h2>
+                <span class="tp-section-title-pre">Cara Kerja Sistem</span>
+                <h2 class="text-3xl font-extrabold text-theme-blue">Alur & Cara Kerja Sistem Greenvision</h2>
                 <p class="text-theme-textMuted text-xs leading-relaxed">
-                    Greenvision dikembangkan menggunakan metodologi **Rapid Application Development (RAD)** untuk menghasilkan sistem klasifikasi citra daun kentang yang cepat, tepat, dan andal berbasis web.
+                    Greenvision memadukan arsitektur kecerdasan buatan dan metodologi **Rapid Application Development (RAD)** untuk menghasilkan alur diagnosis citra daun kentang yang cepat, akurat, dan mudah digunakan oleh petani.
                 </p>
 
                 <!-- RAD Stages list -->

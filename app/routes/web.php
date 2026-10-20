@@ -32,11 +32,7 @@ Route::get('/project', function () {
     return view('project');
 })->name('project');
 
-// Deteksi Penyakit (Input Gambar)
-Route::get('/input', [DetectionController::class, 'showInput'])->name('input');
-Route::post('/predict', [DetectionController::class, 'predict'])->name('predict');
-
-// Autentikasi
+// Autentikasi Tamu (Guest)
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
@@ -45,7 +41,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
 });
 
+// Fitur Pengguna yang Membutuhkan Login (Auth)
 Route::middleware('auth')->group(function () {
+    // Deteksi Penyakit (Input Gambar) - Harus Login Terlebih Dahulu
+    Route::get('/input', [DetectionController::class, 'showInput'])->name('input');
+    Route::post('/predict', [DetectionController::class, 'predict'])->name('predict');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/logout', [AuthController::class, 'logout']); // Menambahkan fallback get logout agar memudahkan demo/logout instan
     

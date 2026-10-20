@@ -30,7 +30,7 @@
             </div>
         @else
             <!-- Statistics Dashboard Card -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
                 <!-- Total -->
                 <div class="bg-white rounded-xl p-4 border border-theme-borderLight shadow-sm flex items-center justify-between text-xs">
                     <div class="text-left">
@@ -50,6 +50,17 @@
                     </div>
                     <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-xs">
                         <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                </div>
+
+                <!-- Sakit -->
+                <div class="bg-white rounded-xl p-4 border border-theme-borderLight shadow-sm flex items-center justify-between text-xs">
+                    <div class="text-left">
+                        <span class="text-[0.6rem] text-theme-textMuted font-bold uppercase tracking-wider">Tanaman Sakit</span>
+                        <h3 class="text-xl font-extrabold text-rose-600 mt-0.5">{{ $sickCount }}</h3>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-virus"></i>
                     </div>
                 </div>
 

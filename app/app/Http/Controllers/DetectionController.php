@@ -116,6 +116,10 @@ class DetectionController extends Controller
             return stripos($d->disease_name, 'sehat') !== false || stripos($d->disease_name, 'healthy') !== false;
         })->count();
         
+        $sickCount = $detections->filter(function($d) {
+            return stripos($d->disease_name, 'sehat') === false && stripos($d->disease_name, 'healthy') === false;
+        })->count();
+
         $earlyBlightCount = $detections->filter(function($d) {
             return stripos($d->disease_name, 'early') !== false || stripos($d->disease_name, 'bercak') !== false;
         })->count();
@@ -124,7 +128,7 @@ class DetectionController extends Controller
             return stripos($d->disease_name, 'late') !== false || stripos($d->disease_name, 'busuk') !== false;
         })->count();
         
-        return view('history', compact('detections', 'totalDetections', 'healthyCount', 'earlyBlightCount', 'lateBlightCount'));
+        return view('history', compact('detections', 'totalDetections', 'healthyCount', 'sickCount', 'earlyBlightCount', 'lateBlightCount'));
     }
 
     public function showDetail($id)
